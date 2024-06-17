@@ -17,3 +17,7 @@ logging.basicConfig(
     level=logging.INFO,
 
 )
+
+### test the logger
+# if __name__ == "__main__":
+#     logging.info("This is an info message")
