@@ -15,7 +15,7 @@ def get_requirements(file_path:str)->List[str]:
     return requirements
 
 setup(
-    name="data-science-project",
+    name="student_performance_indicator",
     version="0.0.1",
     author="chandima",
     author_email="hychandima2000@gmail.com",
