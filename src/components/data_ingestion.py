@@ -16,8 +16,8 @@ from src.logger import logging
 
 @dataclass
 class DataIngestionConfig:
-    train_data_path: str=os.path.join('artifact',"train.csv")
-    test_data_path: str=os.path.join('artifact',"test.csv")
+    train_data_path: str=os.path.join('artifacts',"train.csv")
+    test_data_path: str=os.path.join('artifacts',"test.csv")
     raw_data_path: str=os.path.join('artifacts',"data.csv")
 
 
@@ -29,7 +29,7 @@ class DataIngestion:
         logging.info("Entered the data ingestion method or component")
         try:
             # Read the dataset from csv file. This can be from database, api
-            df=pd.read_csv('notebook\data\students.csv')
+            df=pd.read_csv('notebook/data/students.csv')
             logging.info("Data loaded successfully as data frame")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
@@ -42,12 +42,12 @@ class DataIngestion:
             logging.info("Train, Test split initiated")
 
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
-            logging.info("create tain dataset successfully")
+            logging.info("create train dataset successfully")
 
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
             logging.info("create test dataset successfully")
 
-            logging.info("Ingestion of the data is completed")
+            logging.info("DataIngestion is completed")
 
             return(
                 self.ingestion_config.train_data_path,
