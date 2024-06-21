@@ -115,7 +115,7 @@ class DataTransformation:
                 obj=preprocessing_obj # This is what we want to save
 
             )
-            logging.info("Saved preprocessing object.")
+            logging.info("Saved preprocessing object as pickel.")
 
             return (
                 train_arr,
@@ -124,4 +124,5 @@ class DataTransformation:
             )
         
         except Exception as e:
+            logging.info("Error, while initiating data transformation!")
             raise CustomException(e,sys)
