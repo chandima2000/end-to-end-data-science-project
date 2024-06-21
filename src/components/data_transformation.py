@@ -115,7 +115,7 @@ class DataTransformation:
                 obj=preprocessing_obj # This is what we want to save
 
             )
-            logging.info("Saved preprocessing object as pickel.")
+            logging.info("Created the preprocessor.pkl file.")
 
             return (
                 train_arr,
