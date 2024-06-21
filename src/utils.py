@@ -47,4 +47,5 @@ def evaluate_models(X_train, y_train,X_test,y_test,models):
         return report
 
     except Exception as e:
+        logging.info("Error, while prediction!")
         raise CustomException(e, sys)
