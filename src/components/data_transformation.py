@@ -16,3 +16,49 @@ from src.logger import logging
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
+
+class DataTransformation:
+     def __init__(self):
+        self.data_transformation_config=DataTransformationConfig()
+
+    ## Create all pickle files
+     def get_data_transformer_object(self):
+        try:
+            numerical_columns = ["writing_score", "reading_score"]
+            categorical_columns = [
+                "gender",
+                "race_ethnicity",
+                "parental_level_of_education",
+                "lunch",
+                "test_preparation_course",
+            ]
+
+            # pipeline for the Numerical data
+            num_pipeline= Pipeline(
+
+                steps=[
+                ("imputer",SimpleImputer(strategy="median")), # fill the missing values using "median"
+                ("scaler",StandardScaler()) # Standardization
+                ]
+
+            )
+            logging.info("Numerical data Standard Scaling is completed.")
+
+
+            # pipeline for the Categorical data
+            cat_pipeline=Pipeline(
+
+                steps=[
+                ("imputer",SimpleImputer(strategy="most_frequent")), # fill the missing values using "mode"
+                ("one_hot_encoder",OneHotEncoder()), # Encoding
+                ("scaler",StandardScaler())  # Standardization
+                ]
+
+            )
+            logging.info("Categorical data encoding is completed.")
+
+            
+        except CustomException as e:
+            logging.info("DataTransformation is failed!")
+            raise CustomException(e, sys)
+
