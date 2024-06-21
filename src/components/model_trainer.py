@@ -77,7 +77,12 @@ class ModelTrainer:
             )
             logging.info("Created the model.pkl file.")
 
+            ## Prediction under the Test data
+            predicted=best_model.predict(X_test)
+            r2_score_test = r2_score(y_test, predicted)
 
+            return r2_score_test
+        
         except Exception as e:
             logging.info("Error, while model training!")
             raise CustomException(e,sys)
