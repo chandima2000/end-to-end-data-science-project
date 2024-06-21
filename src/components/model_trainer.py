@@ -70,6 +70,12 @@ class ModelTrainer:
                 logging.info("warning, No best model found!")
                 raise CustomException("No best model found")
 
+            # Save the best model "model.pkl"
+            save_object(
+                file_path=self.model_trainer_config.trained_model_file_path,
+                obj=best_model
+            )
+            logging.info("Created the model.pkl file.")
 
 
         except Exception as e:
