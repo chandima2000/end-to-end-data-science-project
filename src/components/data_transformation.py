@@ -1,5 +1,5 @@
 ### How to handle one hot encoding, label encoding
-### Do feature Engineering, Data cleaning
+### Do feature Engineering, Data cleaning, Pipelining
 
 import sys
 import os
@@ -57,6 +57,17 @@ class DataTransformation:
             )
             logging.info("Categorical data encoding is completed.")
 
+
+            # combine the numerical pipeline and categorical pipeline together
+            preprocessor=ColumnTransformer(
+                [
+                    ("numerical_pipeline",num_pipeline,numerical_columns),
+                    ("categorical_pipeline",cat_pipeline,categorical_columns)
+                ]
+            )
+
+            logging.info("successfully combined the numerical and categorical pipelines together")
+            return preprocessor
             
         except CustomException as e:
             logging.info("DataTransformation is failed!")
