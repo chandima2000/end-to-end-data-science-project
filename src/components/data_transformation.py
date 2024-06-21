@@ -52,7 +52,7 @@ class DataTransformation:
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")), # fill the missing values using "mode"
                 ("one_hot_encoder",OneHotEncoder()), # Encoding
-                ("scaler",StandardScaler())  # Standardization
+                ("scaler",StandardScaler(with_mean=False)) # Standardization
                 ]
 
             )
