@@ -29,14 +29,14 @@ def evaluate_models(X_train, y_train,X_test,y_test,models):
         for i in range(len(list(models))):
             model = list(models.values())[i]
 
-            logging.info("Fitted the model")
+            logging.info(f"Fitted the model - {model}")
             model.fit(X_train, y_train)
 
             y_train_pred = model.predict(X_train)
-            logging.info("Did the prediction on X_train")
+            logging.info(f"Did the prediction on X_train of {model}")
 
             y_test_pred = model.predict(X_test)
-            logging.info("Did the prediction on X_test")
+            logging.info(f"Did the prediction on X_test of {model}")
 
             train_model_score = r2_score(y_train, y_train_pred)
 
