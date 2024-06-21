@@ -19,7 +19,7 @@ class DataTransformationConfig:
 
 class DataTransformation:
      def __init__(self):
-        self.data_transformation_config=DataTransformationConfig()
+        self.data_transformation_config=DataTransformationConfig() # create object
 
     ## Create all pickle files
      def get_data_transformer_object(self):
