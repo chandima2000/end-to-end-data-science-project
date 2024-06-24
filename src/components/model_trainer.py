@@ -49,9 +49,37 @@ class ModelTrainer:
                 "AdaBoost Regressor": AdaBoostRegressor(),
             }
 
+            #  HyperParameter Tuning
+            ## HyperParameters of different ML Algorithms
+            params={
+                "Random Forest":{
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Decision Tree": {
+                    'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                },
+                "Gradient Boosting":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Linear Regression":{},
+                "XGBRegressor":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "AdaBoost Regressor":{
+                    'learning_rate':[.1,.01,0.5,.001],
+                    'n_estimators': [8,16,32,64,128,256]
+                }
+                
+            }
+
+
+
             logging.info("Trying to get the model report.")
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
-                                             models=models)
+                                             models=models,param=params)
             logging.info("Got the model report.")
             
              ## Get the best model score from dictionary
